@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RobotCam - Login</title>
+  <style>
+    /* Tu CSS actual */
+    /* ... (dejo igual que el tuyo para no repetirlo todo) */
+  </style>
+</head>
+<body>
+
+  <div class="login-container" role="main" aria-label="Formulario de inicio de sesión">
+    <div class="logo-circle" aria-hidden="true" >
+      <!-- SVG perro robot con ojos rojos endemoniados -->
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#444" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+        <!-- ... tu SVG completo aquí ... -->
+      </svg>
+    </div>
+
+    <form id="loginForm" autocomplete="off" novalidate>
+      <input type="text" id="username" name="username" placeholder="Usuario" required aria-required="true" aria-label="Usuario" />
+      <input type="password" id="password" name="password" placeholder="Contraseña" required aria-required="true" aria-label="Contraseña" />
+      <button type="submit" aria-label="Iniciar sesión">Acceder</button>
+    </form>
+
+    <div class="bottom-text">ROBOTCAM - BOP N1</div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const username = loginForm.username.value.trim();
+      const password = loginForm.password.value.trim();
+
+      const USER = "admin";
+      const PASS = "1234";
+
+      if (username === USER && password === PASS) {
+        // Abrir nueva pestaña con la página de inicio
+        window.open('inicio.html', '_blank'); 
+        // Opcional: cerrar la pestaña de login si quieres
+        // window.close();
+      } else {
+        alert("Usuario o contraseña incorrectos.");
+      }
+    });
+  </script>
+
+</body>
+</html>

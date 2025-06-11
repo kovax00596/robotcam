@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>RobotCam - Inicio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .message {
+      font-size: 1.5em;
+      color: #ff4444;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .users-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #ff0000aa;
+      max-width: 400px;
+    }
+    .users-box h3 {
+      margin-bottom: 10px;
+      color: #ff0000;
+    }
+    .users-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .users-box li {
+      margin: 6px 0;
+      padding: 6px;
+      background: #222;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="message">Has ingresado a la aplicación del robot, disfruta la experiencia.</div>
+
+  <div class="users-box">
+    <h3>Usuarios conectados:</h3>
+    <ul>
+      <li>Usuario1</li>
+      <li>Usuario2</li>
+      <li>Usuario3</li>
+    </ul>
+  </div>
+
+  <audio id="beep" autoplay>
+    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+    Tu navegador no soporta el audio.
+  </audio>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App del Robot</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #eee;
+    }
+
+    .main-background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1280&q=80') no-repeat center center;
+      background-size: cover;
+      filter: brightness(0.15) blur(14px);
+      z-index: 0;
+    }
+
+    .blur-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      z-index: 1;
+    }
+
+    .login-box {
+      position: relative;
+      z-index: 2;
+      width: 95%;
+      max-width: 400px;
+      padding: 3rem 2.5rem;
+      border-radius: 25px;
+      background: rgba(10, 10, 10, 0.85);
+      border: 2px solid #440000;
+      box-shadow: 0 12px 40px rgba(68, 0, 0, 0.7);
+      text-align: center;
+      color: #eee;
+      box-sizing: border-box;
+    }
+
+    .robot-logo {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 2rem auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #b22222;
+      box-shadow: 0 0 20px 4px rgba(178, 34, 34, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #330000;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .robot-logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 28px 6px rgba(204, 51, 51, 0.9);
+    }
+
+    .robot-logo img {
+      width: 90%;
+      height: 90%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 2px #ff4d4d);
+    }
+
+    .login-box input {
+      width: calc(100% - 2rem);
+      padding: 0.85rem 1rem;
+      margin: 0.75rem 1rem;
+      border-radius: 12px;
+      border: 2px solid #550000;
+      background: #0b0b0b;
+      color: #eee;
+      font-size: 1.1rem;
+      box-shadow: inset 0 0 10px #330000;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      box-sizing: border-box;
+    }
+    .login-box input::placeholder {
+      color: #aa9999;
+      font-style: italic;
+    }
+    .login-box input:focus {
+      outline: none;
+      border-color: #cc4444;
+      box-shadow: 0 0 12px 3px rgba(204, 68, 68, 0.8);
+      background: #1a0d0d;
+    }
+
+    .login-box button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.85rem;
+      font-size: 1.15rem;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8b0000, #b22222);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 6px 16px rgba(178, 34, 34, 0.75);
+      transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    .login-box button:hover {
+      background: linear-gradient(135deg, #b22222, #cc4444);
+      box-shadow: 0 8px 24px rgba(204, 68, 68, 0.9);
+      transform: scale(1.05);
+    }
+    .login-box button:active {
+      transform: scale(0.98);
+      box-shadow: 0 4px 10px rgba(178, 34, 34, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="main-background"></div>
+  <div class="blur-overlay"></div>
+
+  <div class="login-box">
+    <div class="robot-logo">
+      <img src="LOGO APP PWA.png" alt="Logo del robot" />
+    </div>
+    <input type="text" placeholder="Usuario" />
+    <input type="password" placeholder="Contraseña" />
+    <button>Acceder</button>
+  </div>
+</body>
+</html>

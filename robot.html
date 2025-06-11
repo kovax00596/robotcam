@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Robot Cámara</title>
+</head>
+<body>
+  <h2>Robot Cámara (Transmisor)</h2>
+  <video id="localVideo" autoplay muted playsinline style="width: 320px; border:1px solid black;"></video>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    const localVideo = document.getElementById('localVideo');
+    let localStream;
+    let peerConnection;
+
+    const config = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    async function start() {
+      localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      localVideo.srcObject = localStream;
+
+      peerConnection = new RTCPeerConnection(config);
+
+      localStream.getTracks().forEach(track => {
+        peerConnection.addTrack(track, localStream);
+      });
+
+      peerConnection.onicecandidate = event => {
+        if(event.candidate) {
+          socket.emit('ice-candidate', event.candidate);
+        }
+      };
+
+      const offer = await peerConnection.createOffer();
+      await peerConnection.setLocalDescription(offer);
+      socket.emit('offer', offer);
+    }
+
+    socket.on('answer', async (answer) => {
+      await peerConnection.setRemoteDescription(answer);
+    });
+
+    socket.on('ice-candidate', async (candidate) => {
+      try {
+        await peerConnection.addIceCandidate(candidate);
+      } catch(e) {
+        console.error('Error al agregar ICE Candidate', e);
+      }
+    });
+
+    start();
+  </script>
+</body>
+</html>
